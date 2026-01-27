@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yassin Yassin - Platform Engineer</title>
+    <style>
+@font-face {
+            font-family: 'Chillax';
+            src: url('fonts/Fonts/WEB/fonts/Chillax-Variable.woff2') format('woff2'),
+                url('fonts/Fonts/WEB/fonts/Chillax-Variable.woff') format('woff');
+            font-weight: 200 700;
+            font-style: normal;
+            font-display: swap;
+        }
+
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #4b6f7a;
+            --secondary: #6f7c86;
+            --dark: #0b1218;
+            --light: #f2f4f6;
+            --accent: #8da3ad;
+        }
+
+        body {
+            font-family: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6, .nav, .btn {
+            font-family: 'Chillax', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+                .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--dark);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(11, 18, 24, 0.92) 0%, rgba(17, 26, 33, 0.88) 50%, rgba(11, 18, 24, 0.92) 100%);
+            pointer-events: none;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 50% 50%, rgba(75, 111, 122, 0.15) 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, rgba(111, 124, 134, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(11, 18, 24, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+                .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-image {
+            height: 36px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo-image {
+            height: 32px;
+            width: auto;
+            display: block;
+        }
+
+        .profile-pic-nav {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            object-fit: cover;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .profile-pic-nav:hover {
+            transform: scale(1.1);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+            padding: 0 20px;
+            max-width: 1200px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            border: 4px solid var(--primary);
+            box-shadow: 0 0 40px rgba(75, 111, 122, 0.4);
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8em;
+            color: var(--accent);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .hero .description {
+            font-size: 1.2em;
+            color: #cbd5e1;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: #1b2730;
+            color: white;
+            box-shadow: 0 4px 15px rgba(75, 111, 122, 0.35);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            background: #24333d;
+            box-shadow: 0 6px 20px rgba(75, 111, 122, 0.45);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            border: 2px solid rgba(141, 163, 173, 0.6);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .section {
+            padding: 100px 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: linear-gradient(135deg, rgba(75, 111, 122, 0.1) 0%, rgba(111, 124, 134, 0.1) 100%);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(75, 111, 122, 0.3);
+            transition: all 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(75, 111, 122, 0.3);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        .skill-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: rgba(75, 111, 122, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            color: var(--light);
+            border: 1px solid rgba(75, 111, 122, 0.4);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 40px;
+        }
+
+        #projects-old {
+            display: none;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(17, 26, 33, 0.8) 0%, rgba(11, 18, 24, 0.8) 100%);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(75, 111, 122, 0.3);
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(75, 111, 122, 0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 30px;
+            color: white;
+        }
+
+        .project-header h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .project-content {
+            padding: 30px;
+        }
+
+        .project-media {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid rgba(75, 111, 122, 0.3);
+            background: rgba(11, 18, 24, 0.6);
+        }
+
+        .project-media iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        .project-summary {
+            margin-top: 20px;
+            color: #cbd5e1;
+            line-height: 1.7;
+        }
+
+        .project-summary ul {
+            list-style: disc;
+            padding-left: 22px;
+            display: grid;
+            gap: 10px;
+            margin: 0;
+        }
+
+        .looking-for {
+            background: linear-gradient(135deg, rgba(75, 111, 122, 0.1) 0%, rgba(111, 124, 134, 0.1) 100%);
+            border-radius: 20px;
+            padding: 60px;
+            text-align: center;
+            border: 2px solid var(--primary);
+        }
+
+        .looking-for h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--light);
+        }
+
+        .opportunity-types {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        .opportunity-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+
+        .roles-list {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .role-tag {
+            background: rgba(141, 163, 173, 0.2);
+            color: var(--accent);
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1em;
+            border: 1px solid rgba(141, 163, 173, 0.4);
+        }
+
+        .contact-section {
+            text-align: center;
+            padding: 80px 50px;
+            background: linear-gradient(135deg, rgba(75, 111, 122, 0.1) 0%, rgba(111, 124, 134, 0.1) 100%);
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--light);
+            text-decoration: none;
+            font-size: 1.1em;
+            padding: 15px 30px;
+            background: rgba(75, 111, 122, 0.2);
+            border-radius: 15px;
+            border: 1px solid rgba(75, 111, 122, 0.4);
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .project-card .project-summary li {
+            color: #cbd5e1;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+
+            .nav {
+                padding: 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+                font-size: 0.9em;
+            }
+
+            .section {
+                padding: 60px 20px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .profile-img {
+                width: 140px;
+                height: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="logo"><img src="logo.png" alt="Yassin Yassin" class="logo-image"></div>
+        <ul class="nav-links">
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#looking">Opportunities</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li class="nav-logo"><img src="logo.png" alt="Yassin Yassin" class="nav-logo-image"></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Yassin Yassin</h1>
+            <p class="subtitle">Platform Engineer / Cloud Architect / AI Engineer</p>
+            <p class="description">
+                I?m Yassin, a platform engineer and cloud architect with over six years of experience in IT and Cloud Engineering, and the past three years focused on building production grade cloud platforms, data systems, and applied AI products.
+
+                I began in hands on IT support and infrastructure operations, then progressively specialised in Azure and AWS, Kubernetes platform engineering, infrastructure as code, governance, MLOps, and API driven systems. I hold the Azure Solutions Architect Expert certification, Azure Administrator Associate, Certified Kubernetes Administrator, multiple Microsoft 365 certifications, and CompTIA Network+.
+
+                Today I design and build end to end systems spanning infrastructure, APIs, data pipelines, analytics, compliance, and applied AI. A core principle in my work is deterministic first system design, where systems are correct, traceable, and governed by default, and AI is layered as an assistive capability rather than a decision engine. This approach underpins projects such as my compliance engine built from legislation.gov.uk data, analytics and ML reporting pipelines, location intelligence platforms, AWS MLOps deployments, and asset management systems.
+
+                Alongside this profile, I include live demo videos showcasing production systems I?ve built, including an AWS MLOps platform, executive analytics and ML reporting pipelines, a UK legislation driven compliance engine, an asset management platform, and a location intelligence product. These demonstrate not only technical depth, but my ability to design complete, deployable systems and turn complex requirements into working products.
+
+                I?m highly self driven, learn quickly, and enjoy operating across domains, from infrastructure and governance to data, ML, and product engineering. My focus is always on building systems that are reliable in production, understandable by humans, and viable commercially.
+            </p>
+            
+            <div class="cta-buttons">
+                <a href="#looking" class="btn btn-primary">View Opportunities</a>
+            </div>
+        </div>
+    </section>
+
+        <section class="section" id="projects">
+        <h2 class="section-title">Projects / Demos</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Analytics &amp; ML Executive Reporting Platform</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/17lBbWHgt7XhAWUxOqBafLlTd29wYyD3U/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>End-to-end analytics pipeline producing executive-ready PDF and Excel reports from raw business data</li>
+                            <li>Orchestrated stage-based execution across ETL, SQL analysis, business metrics, ML, and reporting with full run tracking</li>
+                            <li>Structured ETL and data quality scoring feeding a formal "Data Quality Scorecard" in the final report</li>
+                            <li>Auditable SQL analysis layer persisting queries, row counts, tables touched, and rendered outputs</li>
+                            <li>KPI persistence layer computing stable customer, revenue, behavioural, and product metrics</li>
+                            <li>Narrative insights layer translating KPIs and SQL evidence into executive business conclusions with cited sources</li>
+                            <li>Deterministic ML execution gate controlling when ML runs versus purely deterministic reporting</li>
+                            <li>Unified ML layer combining clustering, dimensionality reduction, experiment tracking, and interpretability into a single controlled stage</li>
+                            <li>Local LLM integration (Ollama + Qwen 2.5 Coder 7B): ran Qwen 2.5 Coder 7B locally to assist with SQL reasoning and business insight generation, validating schema suitability, interpreting query results, and translating KPI outputs into plain language conclusions, with execution gated to avoid unnecessary LLM use</li>
+                            <li>Automatic executive output generation producing a formatted PDF report and structured Excel workbook at the end of each run</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Asset Management Platform</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/1xbZKIB3F41ey9pC35ehXWfxNyr_U9ovL/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>Automated user onboarding via Google Workspace sync with automatic account creation and updates</li>
+                            <li>Users are never deleted, only deactivated, preserving immutable audit history</li>
+                            <li>Centralised asset lifecycle tracking covering assignment, status changes, expiry, and end of life</li>
+                            <li>Automated warranty and lifecycle expiry monitoring with proactive alerts</li>
+                            <li>Scheduled MFA enforcement aligned with user status and role changes</li>
+                            <li>Asset to user relationship tracking with full historical visibility</li>
+                            <li>Google Workspace exports supported for audits, reporting, and compliance</li>
+                            <li>System wide export functionality for users, assets, assignments, and lifecycle events</li>
+                            <li>Designed for full auditability, all actions logged, nothing hard deleted</li>
+                            <li>Event driven automation reducing manual IT operational workload</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Compliance Engine (Legislation to Cloud Constraints)</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/1FKV-QBiL_qEcvP-DWt0qqZO9G9HdjLWy/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>Built a deterministic legislative to infrastructure compliance pipeline turning UK law into auditable cloud requirements</li>
+                            <li>Ingested structured XML directly from legislation.gov.uk preserving hierarchy, versioning, and jurisdiction</li>
+                            <li>Automated ingestion and preparation using n8n production workflows</li>
+                            <li>Normalised legislation into machine safe JSON with explicit parent child relationships and legal scope preservation</li>
+                            <li>Separated raw law text from compliance meaning to ensure zero early interpretation</li>
+                            <li>Extracted obligations at paragraph level with actor, action, object, and conditions linked to exact legal text</li>
+                            <li>Used AI only for bounded enrichment, never for decision making or requirement invention</li>
+                            <li>Promoted obligations to rulings conservatively using high confidence deterministic rules</li>
+                            <li>Mapped rulings to canonical cloud aware enforcement constraints</li>
+                            <li>Built deterministic client context inference using a structured questionnaire</li>
+                            <li>Generated explainable compliance outputs with rationale and legal basis</li>
+                            <li>Maintained full end to end traceability from answers to constraints to rulings to legislative paragraphs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Business Location Intelligence Platform</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/1ywsIwrb3kmiRLo3aDfTX9-vDAHZuhzRv/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>End to end location evaluation product for first store founders assessing commercial viability before leasing</li>
+                            <li>Combines multiple external data sources into a single ranked decision model</li>
+                            <li>Ingests Google Places data to identify competitors with ratings, reviews, price levels, and spatial density</li>
+                            <li>Uses Google demand signals to estimate peak times, weekday vs weekend activity, and relative demand strength</li>
+                            <li>Integrates Rightmove commercial listings for pricing, availability, and affordability context</li>
+                            <li>Generates candidate locations from OpenStreetMap using geospatial IDs as stable anchors</li>
+                            <li>Performs distance based spatial analysis including proximity, clustering density, and nearest neighbour effects</li>
+                            <li>Scores locations using a multi factor ranking model across competition, demand, density, feasibility, and confidence</li>
+                            <li>Produces explainable rankings describing why locations score well or poorly</li>
+                            <li>Exposes a client facing REST API to trigger runs and retrieve ranked locations and breakdowns</li>
+                            <li>Includes an interactive map visualisation layer for spatial exploration</li>
+                            <li>Designed as a repeatable deterministic product for multiple business types and postcodes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>AWS MLOps Platform &mdash; Production ML Deployment (Loom Demo)</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/1q7AP7JDj2V5_OheY6dAsE-T7KdrGxH_x/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>End-to-end MLOps platform deployed on AWS for model training, tracking, and production inference</li>
+                            <li>MLflow based experiment tracking with versioned runs and reproducible training pipelines</li>
+                            <li>Automated training, evaluation, and promotion workflow from development to production</li>
+                            <li>Containerised inference service deployed on cloud infrastructure with controlled rollout</li>
+                            <li>Integrated monitoring and validation to ensure model performance and stability</li>
+                            <li>Demonstrates full lifecycle from experimentation to live production deployment</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="section" id="skills">
+        <h2 class="section-title">Technical Expertise</h2>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <h3>Cloud Platforms</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">AWS (EKS, VPC, IAM)</li>
+                    <li class="skill-tag">Azure (AKS, Entra ID)</li>
+                    <li class="skill-tag">Multi-Cloud</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Container Orchestration</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Kubernetes</li>
+                    <li class="skill-tag">Docker</li>
+                    <li class="skill-tag">EKS/AKS</li>
+                    <li class="skill-tag">Helm</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Infrastructure as Code</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Terraform</li>
+                    <li class="skill-tag">Bicep</li>
+                    <li class="skill-tag">GitOps</li>
+                    <li class="skill-tag">FluxCD</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Observability</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Prometheus</li>
+                    <li class="skill-tag">Grafana</li>
+                    <li class="skill-tag">CloudWatch</li>
+                    <li class="skill-tag">Log Analytics</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>CI/CD & Automation</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">GitHub Actions</li>
+                    <li class="skill-tag">Jenkins</li>
+                    <li class="skill-tag">Azure Pipelines</li>
+                    <li class="skill-tag">Logic Apps</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>ML & Data Platforms</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">MLflow</li>
+                    <li class="skill-tag">Airflow</li>
+                    <li class="skill-tag">Kafka</li>
+                    <li class="skill-tag">Data Pipelines</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>AI &amp; Automation</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Applied AI &amp; ML Systems</li>
+                    <li class="skill-tag">Local LLM Deployment (Ollama)</li>
+                    <li class="skill-tag">Model Orchestration &amp; Gating</li>
+                    <li class="skill-tag">LLM Assisted Data Analysis</li>
+                    <li class="skill-tag">Prompt Engineering for Engineering Workflows</li>
+                                                            <li class="skill-tag">GitHub Copilot / Codex / Claude Code</li>
+                    <li class="skill-tag">Workflow Automation</li>
+                </ul>
+            </div>
+            <div class="skill-card">
+                <h3>Workflow Automation</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">N8n</li>
+                    <li class="skill-tag">AI Integration</li>
+                    <li class="skill-tag">Data Extraction</li>
+                    <li class="skill-tag">Process Automation</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Security & Compliance</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Azure Policy</li>
+                    <li class="skill-tag">GDPR/NCSC</li>
+                    <li class="skill-tag">Private Networks</li>
+                    <li class="skill-tag">Secrets Management</li>
+                </ul>
+            </div>
+
+            <div class="skill-card">
+                <h3>Programming</h3>
+                <ul class="skill-list">
+                    <li class="skill-tag">Python</li>
+                    <li class="skill-tag">Bash</li>
+                    <li class="skill-tag">PowerShell</li>
+                    <li class="skill-tag">Node.js</li>
+                </ul>
+            </div>
+                </div>
+    </section>
+
+    
+
+    <section class="section" id="projects-old" aria-hidden="true">
+        <h2 class="section-title">Projects / Demos</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Continuous Training MLOps Pipeline</h3>
+                </div>
+                <div class="project-content">
+                    <p>End-to-end MLOps platform orchestrating ML workflows with Airflow, tracking experiments via MLflow, and deploying containerized models on Kubernetes. Implemented GitOps-driven deployments with FluxCD and comprehensive observability.</p>
+                    
+                    <div class="video-showcase">
+                        <a href="https://drive.google.com/file/d/1q7AP7JDj2V5_OheY6dAsE-T7KdrGxH_x/view?usp=drive_link" target="_blank">
+                            <span>▶</span> Watch Project Walkthrough
+                        </a>
+                    </div>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Airflow</span>
+                        <span class="tech-badge">MLflow</span>
+                        <span class="tech-badge">BentoML</span>
+                        <span class="tech-badge">Kubernetes</span>
+                        <span class="tech-badge">FluxCD</span>
+                        <span class="tech-badge">Terraform</span>
+                        <span class="tech-badge">AWS EKS</span>
+                        <span class="tech-badge">Prometheus</span>
+                        <span class="tech-badge">Grafana</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Trusted Research Environment</h3>
+                </div>
+                <div class="project-content">
+                    <p>Architected a governed Azure environment aligned to GDPR, ICO, and NCSC standards. Built private AKS platform with strict network isolation, Azure Policy governance, and event-driven infrastructure workflows with auditable approval gates.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Azure AKS</span>
+                        <span class="tech-badge">Azure Policy</span>
+                        <span class="tech-badge">Logic Apps</span>
+                        <span class="tech-badge">Bicep</span>
+                        <span class="tech-badge">Entra ID</span>
+                        <span class="tech-badge">Private Endpoints</span>
+                        <span class="tech-badge">GitHub Actions</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>Event-Driven Streaming ETL</h3>
+                </div>
+                <div class="project-content">
+                    <p>Built real-time data processing platform using Kafka for event streaming and ETL workflows. Implemented consumer groups, topic management, and data transformation pipelines with comprehensive monitoring.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Apache Kafka</span>
+                        <span class="tech-badge">Python</span>
+                        <span class="tech-badge">Polars</span>
+                        <span class="tech-badge">PostgreSQL</span>
+                        <span class="tech-badge">Docker</span>
+                        <span class="tech-badge">Tableau</span>
+                        <span class="tech-badge">Prometheus</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>SQL Data Migration Platform</h3>
+                </div>
+                <div class="project-content">
+                    <p>Designed and executed large-scale data migration using Azure Data Factory, Databricks, and Synapse Analytics. Implemented secure data pipelines with RBAC and Key Vault integration for enterprise analytics.</p>
+
+                    <div class="tech-stack">
+                        <span class="tech-badge">Azure Data Factory</span>
+                        <span class="tech-badge">Databricks</span>
+                        <span class="tech-badge">Synapse Analytics</span>
+                        <span class="tech-badge">PySpark</span>
+                        <span class="tech-badge">Power BI</span>
+                        <span class="tech-badge">Key Vault</span>
+                    </div>
+                </div>
+            </div>
+                </div>
+    </section>
+
+    <section class="section" id="looking">
+        <div class="looking-for">
+            <h2>Open to New Opportunities</h2>
+            <p style="color: #94a3b8; font-size: 1.2em; margin-bottom: 30px;">
+                Based in London, actively seeking challenging roles in platform engineering, cloud architecture, and ML infrastructure.
+            </p>
+            
+            <div class="opportunity-types">
+                <div class="opportunity-badge">Full-Time</div>
+                <div class="opportunity-badge">Contract</div>
+                <div class="opportunity-badge">Part-Time</div>
+            </div>
+
+            <p style="color: var(--accent); font-size: 1.3em; font-weight: 600; margin: 40px 0 20px;">Target Roles</p>
+            <div class="roles-list">
+                <div class="role-tag">Senior Platform Engineer</div>
+                <div class="role-tag">DevOps Engineer</div>
+                <div class="role-tag">Cloud Architect</div>
+                <div class="role-tag">ML Platform Engineer</div>
+                <div class="role-tag">AI Engineer</div>
+                <div class="role-tag">Platform + AI Engineer</div>
+                                <div class="role-tag">Infrastructure Engineer</div>
+            </div>
+
+            <p style="color: #94a3b8; margin-top: 40px; font-size: 1.1em;">
+                Location: London | Open to Remote & Hybrid
+            </p>
+                </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <p style="color: #94a3b8; font-size: 1.2em; margin-bottom: 20px;">
+            Interested in discussing opportunities or collaboration? Get in touch.
+        </p>
+        
+        <div class="contact-links">
+            <a href="mailto:Yassin_123@hotmail.co.uk" class="contact-link">
+                Email
+            </a>
+            <a href="tel:07538271428" class="contact-link">
+                Phone
+            </a>
+            <a href="Yassin-CV-feb.pdf" class="contact-link" target="_blank">
+                Full CV
+            </a>
+            <a href="https://www.linkedin.com/in/yassin-yassin-7246261a8/" class="contact-link" target="_blank" rel="noopener">
+                LinkedIn
+            </a>
+            <a href="https://github.com/Y2not2nd" class="contact-link" target="_blank" rel="noopener">
+                GitHub
+            </a>
+                </div>
+    </section>
+</body>
+</html>
