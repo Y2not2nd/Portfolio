@@ -143,7 +143,26 @@
             text-align: center;
             z-index: 1;
             padding: 0 20px;
-            max-width: 1200px;
+            padding-top: 90px;
+            max-width: 92vw;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 130px;
+            right: 190px;
+            width: 220px;
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+        }
+
+        .hero-logo-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
         }
 
         .profile-img {
@@ -162,13 +181,10 @@
             50% { transform: translateY(-20px); }
         }
 
-        .hero h1 {
+                .hero h1 {
             font-size: 4.5em;
             margin-bottom: 20px;
-            background: linear-gradient(135deg, var(--light) 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: var(--light);
         }
 
         .hero .subtitle {
@@ -179,9 +195,10 @@
         }
 
         .hero .description {
+            text-align: left;
             font-size: 1.2em;
             color: #cbd5e1;
-            max-width: 700px;
+            max-width: 85vw;
             margin: 0 auto 40px;
             line-height: 1.8;
         }
@@ -484,28 +501,28 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#looking">Opportunities</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li class="nav-logo"><img src="logo.png" alt="Yassin Yassin" class="nav-logo-image"></li>
         </ul>
     </nav>
 
     <section class="hero">
+        <div class="hero-logo"><img src="logo.png" alt="Yassin Yassin" class="hero-logo-image"></div>
         <div class="hero-content">
             <h1>Yassin Yassin</h1>
             <p class="subtitle">Platform Engineer / Cloud Architect / AI Engineer</p>
             <p class="description">
-                I?m Yassin, a platform engineer and cloud architect with over six years of experience in IT and Cloud Engineering, and the past three years focused on building production grade cloud platforms, data systems, and applied AI products.
+                I'm Yassin, a platform engineer and cloud architect with over six years of experience in IT and Cloud Engineering, and the past three years focused on building production grade cloud platforms, data systems, and applied AI products.
 
                 I began in hands on IT support and infrastructure operations, then progressively specialised in Azure and AWS, Kubernetes platform engineering, infrastructure as code, governance, MLOps, and API driven systems. I hold the Azure Solutions Architect Expert certification, Azure Administrator Associate, Certified Kubernetes Administrator, multiple Microsoft 365 certifications, and CompTIA Network+.
 
                 Today I design and build end to end systems spanning infrastructure, APIs, data pipelines, analytics, compliance, and applied AI. A core principle in my work is deterministic first system design, where systems are correct, traceable, and governed by default, and AI is layered as an assistive capability rather than a decision engine. This approach underpins projects such as my compliance engine built from legislation.gov.uk data, analytics and ML reporting pipelines, location intelligence platforms, AWS MLOps deployments, and asset management systems.
 
-                Alongside this profile, I include live demo videos showcasing production systems I?ve built, including an AWS MLOps platform, executive analytics and ML reporting pipelines, a UK legislation driven compliance engine, an asset management platform, and a location intelligence product. These demonstrate not only technical depth, but my ability to design complete, deployable systems and turn complex requirements into working products.
+                Alongside this profile, I include live demo videos showcasing production systems I've built, including an AWS MLOps platform, executive analytics and ML reporting pipelines, a UK legislation driven compliance engine, an asset management platform, and a location intelligence product. These demonstrate not only technical depth, but my ability to design complete, deployable systems and turn complex requirements into working products.
 
-                I?m highly self driven, learn quickly, and enjoy operating across domains, from infrastructure and governance to data, ML, and product engineering. My focus is always on building systems that are reliable in production, understandable by humans, and viable commercially.
+                I'm highly self driven, learn quickly, and enjoy operating across domains, from infrastructure and governance to data, ML, and product engineering. My focus is always on building systems that are reliable in production, understandable by humans, and viable commercially.
             </p>
             
             <div class="cta-buttons">
-                <a href="#looking" class="btn btn-primary">View Opportunities</a>
+                <a href="Yassin-CV-feb.pdf" class="btn btn-primary" target="_blank">Download CV</a>
             </div>
         </div>
     </section>
@@ -515,7 +532,7 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Analytics &amp; ML Executive Reporting Platform</h3>
+                    <h3>AI-Assisted Executive Analytics Platform</h3>
                 </div>
                 <div class="project-content">
                     <div class="project-media">
@@ -540,24 +557,20 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3>Asset Management Platform</h3>
+                    <h3>AWS MLOps Platform &mdash; Production ML Deployment (Loom Demo)</h3>
                 </div>
                 <div class="project-content">
                     <div class="project-media">
-                        <iframe src="https://drive.google.com/file/d/1xbZKIB3F41ey9pC35ehXWfxNyr_U9ovL/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe src="https://drive.google.com/file/d/1q7AP7JDj2V5_OheY6dAsE-T7KdrGxH_x/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="project-summary">
                         <ul>
-                            <li>Automated user onboarding via Google Workspace sync with automatic account creation and updates</li>
-                            <li>Users are never deleted, only deactivated, preserving immutable audit history</li>
-                            <li>Centralised asset lifecycle tracking covering assignment, status changes, expiry, and end of life</li>
-                            <li>Automated warranty and lifecycle expiry monitoring with proactive alerts</li>
-                            <li>Scheduled MFA enforcement aligned with user status and role changes</li>
-                            <li>Asset to user relationship tracking with full historical visibility</li>
-                            <li>Google Workspace exports supported for audits, reporting, and compliance</li>
-                            <li>System wide export functionality for users, assets, assignments, and lifecycle events</li>
-                            <li>Designed for full auditability, all actions logged, nothing hard deleted</li>
-                            <li>Event driven automation reducing manual IT operational workload</li>
+                            <li>End-to-end MLOps platform deployed on AWS for model training, tracking, and production inference</li>
+                            <li>MLflow based experiment tracking with versioned runs and reproducible training pipelines</li>
+                            <li>Automated training, evaluation, and promotion workflow from development to production</li>
+                            <li>Containerised inference service deployed on cloud infrastructure with controlled rollout</li>
+                            <li>Integrated monitoring and validation to ensure model performance and stability</li>
+                            <li>Demonstrates full lifecycle from experimentation to live production deployment</li>
                         </ul>
                     </div>
                 </div>
@@ -619,26 +632,31 @@
 
             <div class="project-card">
                 <div class="project-header">
-                    <h3>AWS MLOps Platform &mdash; Production ML Deployment (Loom Demo)</h3>
+                    <h3>Asset Management Platform</h3>
                 </div>
                 <div class="project-content">
                     <div class="project-media">
-                        <iframe src="https://drive.google.com/file/d/1q7AP7JDj2V5_OheY6dAsE-T7KdrGxH_x/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe src="https://drive.google.com/file/d/1xbZKIB3F41ey9pC35ehXWfxNyr_U9ovL/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="project-summary">
                         <ul>
-                            <li>End-to-end MLOps platform deployed on AWS for model training, tracking, and production inference</li>
-                            <li>MLflow based experiment tracking with versioned runs and reproducible training pipelines</li>
-                            <li>Automated training, evaluation, and promotion workflow from development to production</li>
-                            <li>Containerised inference service deployed on cloud infrastructure with controlled rollout</li>
-                            <li>Integrated monitoring and validation to ensure model performance and stability</li>
-                            <li>Demonstrates full lifecycle from experimentation to live production deployment</li>
+                            <li>Automated user onboarding via Google Workspace sync with automatic account creation and updates</li>
+                            <li>Users are never deleted, only deactivated, preserving immutable audit history</li>
+                            <li>Centralised asset lifecycle tracking covering assignment, status changes, expiry, and end of life</li>
+                            <li>Automated warranty and lifecycle expiry monitoring with proactive alerts</li>
+                            <li>Scheduled MFA enforcement aligned with user status and role changes</li>
+                            <li>Asset to user relationship tracking with full historical visibility</li>
+                            <li>Google Workspace exports supported for audits, reporting, and compliance</li>
+                            <li>System wide export functionality for users, assets, assignments, and lifecycle events</li>
+                            <li>Designed for full auditability, all actions logged, nothing hard deleted</li>
+                            <li>Event driven automation reducing manual IT operational workload</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
 
     <section class="section" id="skills">
