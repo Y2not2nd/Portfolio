@@ -88,12 +88,9 @@
                 .logo {
             display: flex;
             align-items: center;
-        }
-
-        .logo-image {
-            height: 36px;
-            width: auto;
-            display: block;
+            font-weight: 600;
+            font-size: 1.1em;
+            color: var(--light);
         }
 
         .nav-links {
@@ -457,21 +454,52 @@
         }
 
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .hero .subtitle {
-                font-size: 1.3em;
+            .hero-logo {
+                display: none;
             }
 
             .nav {
-                padding: 20px;
+                padding: 12px 16px;
+                flex-wrap: wrap;
+                row-gap: 8px;
+                justify-content: center;
+            }
+
+            .logo {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .logo-image {
+                height: 30px;
             }
 
             .nav-links {
-                gap: 15px;
-                font-size: 0.9em;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 8px 14px;
+                font-size: 0.88em;
+            }
+
+            .hero-content {
+                padding-top: 150px;
+                max-width: 94vw;
+            }
+
+            .hero h1 {
+                font-size: 2.2em;
+                line-height: 1.1;
+            }
+
+            .hero .subtitle {
+                font-size: 1.1em;
+            }
+
+            .hero .description {
+                font-size: 1em;
+                max-width: 94vw;
+                line-height: 1.6;
             }
 
             .section {
@@ -483,7 +511,13 @@
             }
 
             .cta-buttons {
+                width: 100%;
                 flex-direction: column;
+            }
+
+            .btn {
+                width: min(100%, 320px);
+                margin: 0 auto;
             }
 
             .profile-img {
@@ -491,11 +525,34 @@
                 height: 140px;
             }
         }
+
+        @media (max-width: 420px) {
+            .nav {
+                padding: 10px 12px;
+            }
+
+            .logo-image {
+                height: 26px;
+            }
+
+            .nav-links {
+                gap: 6px 10px;
+                font-size: 0.8em;
+            }
+
+            .hero-content {
+                padding-top: 165px;
+            }
+
+            .hero h1 {
+                font-size: 1.9em;
+            }
+        }
     </style>
 </head>
 <body>
     <nav class="nav">
-        <div class="logo"><img src="logo.png" alt="Yassin Yassin" class="logo-image"></div>
+        <div class="logo">Yassin Yassin</div>
         <ul class="nav-links">
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
@@ -505,7 +562,6 @@
     </nav>
 
     <section class="hero">
-        <div class="hero-logo"><img src="logo.png" alt="Yassin Yassin" class="hero-logo-image"></div>
         <div class="hero-content">
             <h1>Yassin Yassin</h1>
             <p class="subtitle">Platform Engineer / Cloud Architect / AI Engineer</p>
@@ -530,24 +586,23 @@
         <div class="projects-grid">
             <div class="project-card">
                 <div class="project-header">
-                    <h3>AI-Assisted Executive Analytics Platform</h3>
+                    <h3>Customer Ordering &amp; Delivery Management System</h3>
                 </div>
                 <div class="project-content">
                     <div class="project-media">
-                        <iframe src="https://drive.google.com/file/d/17lBbWHgt7XhAWUxOqBafLlTd29wYyD3U/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                        <iframe src="https://drive.google.com/file/d/13LQ20M1uTgN_awb3YwRbTeyO_iN6P-fH/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                     </div>
                     <div class="project-summary">
                         <ul>
-                            <li>End-to-end analytics pipeline producing executive-ready PDF and Excel reports from raw business data</li>
-                            <li>Orchestrated stage-based execution across ETL, SQL analysis, business metrics, ML, and reporting with full run tracking</li>
-                            <li>Structured ETL and data quality scoring feeding a formal "Data Quality Scorecard" in the final report</li>
-                            <li>Auditable SQL analysis layer persisting queries, row counts, tables touched, and rendered outputs</li>
-                            <li>KPI persistence layer computing stable customer, revenue, behavioural, and product metrics</li>
-                            <li>Narrative insights layer translating KPIs and SQL evidence into executive business conclusions with cited sources</li>
-                            <li>Deterministic ML execution gate controlling when ML runs versus purely deterministic reporting</li>
-                            <li>Unified ML layer combining clustering, dimensionality reduction, experiment tracking, and interpretability into a single controlled stage</li>
-                            <li>Local LLM integration (Ollama + Qwen 2.5 Coder 7B): ran Qwen 2.5 Coder 7B locally to assist with SQL reasoning and business insight generation, validating schema suitability, interpreting query results, and translating KPI outputs into plain language conclusions, with execution gated to avoid unnecessary LLM use</li>
-                            <li>Automatic executive output generation producing a formatted PDF report and structured Excel workbook at the end of each run</li>
+                            <li>Led the full engagement end to end, from initial problem discovery through solution definition, scope agreement, and independent delivery for a client running operations entirely through WhatsApp and Snapchat DMs</li>
+                            <li>Designed and built a web-based ordering platform replacing manual order management, reducing admin workload by approximately 85 percent while introducing full order visibility and control</li>
+                            <li>Owned the full codebase and system architecture including backend logic, frontend admin dashboard, database design, and API integrations</li>
+                            <li>Integrated WhatsApp Business Cloud API for automated communication between the operations team, drivers, and customers</li>
+                            <li>Utilised Google Routes API for real-time delivery ETAs</li>
+                            <li>Implemented core system protections including duplicate order prevention, idempotent processing, and full order state tracking to ensure reliability under real usage</li>
+                            <li>Built input validation and operational constraints such as postcode format enforcement and configurable delivery radius rules based on defined postcode prefixes</li>
+                            <li>Built an admin interface granting the client full visibility and control over operations from order intake through to fulfilment, including queue management, order reassignment, and completion workflows</li>
+                            <li>Hosted on GCP with domain setup, tenant and resource level security, and SSL configuration</li>
                         </ul>
                     </div>
                 </div>
@@ -652,6 +707,31 @@
                     </div>
                 </div>
             </div>
+
+            <div class="project-card">
+                <div class="project-header">
+                    <h3>AI-Assisted Executive Analytics Platform</h3>
+                </div>
+                <div class="project-content">
+                    <div class="project-media">
+                        <iframe src="https://drive.google.com/file/d/17lBbWHgt7XhAWUxOqBafLlTd29wYyD3U/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div>
+                    <div class="project-summary">
+                        <ul>
+                            <li>End-to-end analytics pipeline producing executive-ready PDF and Excel reports from raw business data</li>
+                            <li>Orchestrated stage-based execution across ETL, SQL analysis, business metrics, ML, and reporting with full run tracking</li>
+                            <li>Structured ETL and data quality scoring feeding a formal "Data Quality Scorecard" in the final report</li>
+                            <li>Auditable SQL analysis layer persisting queries, row counts, tables touched, and rendered outputs</li>
+                            <li>KPI persistence layer computing stable customer, revenue, behavioural, and product metrics</li>
+                            <li>Narrative insights layer translating KPIs and SQL evidence into executive business conclusions with cited sources</li>
+                            <li>Deterministic ML execution gate controlling when ML runs versus purely deterministic reporting</li>
+                            <li>Unified ML layer combining clustering, dimensionality reduction, experiment tracking, and interpretability into a single controlled stage</li>
+                            <li>Local LLM integration (Ollama + Qwen 2.5 Coder 7B): ran Qwen 2.5 Coder 7B locally to assist with SQL reasoning and business insight generation, validating schema suitability, interpreting query results, and translating KPI outputs into plain language conclusions, with execution gated to avoid unnecessary LLM use</li>
+                            <li>Automatic executive output generation producing a formatted PDF report and structured Excel workbook at the end of each run</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -663,8 +743,9 @@
             <div class="skill-card">
                 <h3>Cloud Platforms</h3>
                 <ul class="skill-list">
-                    <li class="skill-tag">AWS (EKS, VPC, IAM)</li>
-                    <li class="skill-tag">Azure (AKS, Entra ID)</li>
+                    <li class="skill-tag">AWS (EKS, VPC, IAM, S3, ECS)</li>
+                    <li class="skill-tag">Azure (AKS, Entra ID, Policy, Networking)</li>
+                    <li class="skill-tag">GCP</li>
                     <li class="skill-tag">Multi-Cloud</li>
                 </ul>
             </div>
@@ -695,7 +776,11 @@
                     <li class="skill-tag">Prometheus</li>
                     <li class="skill-tag">Grafana</li>
                     <li class="skill-tag">CloudWatch</li>
+                    <li class="skill-tag">App Insights</li>
                     <li class="skill-tag">Log Analytics</li>
+                    <li class="skill-tag">OpenTelemetry</li>
+                    <li class="skill-tag">Sentry</li>
+                    <li class="skill-tag">Loki</li>
                 </ul>
             </div>
 
@@ -704,7 +789,7 @@
                 <ul class="skill-list">
                     <li class="skill-tag">GitHub Actions</li>
                     <li class="skill-tag">Jenkins</li>
-                    <li class="skill-tag">Azure Pipelines</li>
+                    <li class="skill-tag">Azure DevOps</li>
                     <li class="skill-tag">Logic Apps</li>
                 </ul>
             </div>
@@ -715,7 +800,10 @@
                     <li class="skill-tag">MLflow</li>
                     <li class="skill-tag">Airflow</li>
                     <li class="skill-tag">Kafka</li>
-                    <li class="skill-tag">Data Pipelines</li>
+                    <li class="skill-tag">Azure Data Factory</li>
+                    <li class="skill-tag">Databricks</li>
+                    <li class="skill-tag">PostgreSQL</li>
+                    <li class="skill-tag">ETL / Data Pipelines</li>
                 </ul>
             </div>
 
@@ -725,9 +813,12 @@
                     <li class="skill-tag">Applied AI &amp; ML Systems</li>
                     <li class="skill-tag">Local LLM Deployment (Ollama)</li>
                     <li class="skill-tag">Model Orchestration &amp; Gating</li>
+                    <li class="skill-tag">RAG</li>
+                    <li class="skill-tag">Multi-Agent Workflows</li>
+                    <li class="skill-tag">OpenAI API</li>
                     <li class="skill-tag">LLM Assisted Data Analysis</li>
                     <li class="skill-tag">Prompt Engineering for Engineering Workflows</li>
-                                                            <li class="skill-tag">GitHub Copilot / Codex / Claude Code</li>
+                    <li class="skill-tag">GitHub Copilot / Codex / Claude Code</li>
                     <li class="skill-tag">Workflow Automation</li>
                 </ul>
             </div>
@@ -745,7 +836,12 @@
                 <h3>Security & Compliance</h3>
                 <ul class="skill-list">
                     <li class="skill-tag">Azure Policy</li>
+                    <li class="skill-tag">Microsoft Defender</li>
+                    <li class="skill-tag">RBAC</li>
+                    <li class="skill-tag">Key Vault</li>
                     <li class="skill-tag">GDPR/NCSC</li>
+                    <li class="skill-tag">DLP</li>
+                    <li class="skill-tag">Data Classification</li>
                     <li class="skill-tag">Private Networks</li>
                     <li class="skill-tag">Secrets Management</li>
                 </ul>
